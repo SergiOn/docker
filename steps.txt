@@ -1,2 +1,5 @@
 linux: ubuntu
 https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/#install-docker-ce
+
+docker-machine
+https://docs.docker.com/machine/install-machine/
