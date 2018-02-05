@@ -1,0 +1,36 @@
+docker run -p 4567:4567 -d rickfast/hello-oreilly-http
+
+curl localhost:4567
+
+docker ls
+
+docker-machine ls
+
+docker-machine create --driver virtualbox rick
+
+docker-machine env rick
+
+eval $(docker-machine env rick)
+
+docker run -p 4567:4567 -d rickfast/hello-oreilly-http
+
+docker-machine ip rick
+
+docker-machine stop rick
+
+docker-machine rm rick
+
+sudo docker container ls
+
+sudo docker stop CONTAINER_ID
+
+curl localhost:4567
+curl: (7) Failed to connect to localhost port 4567: Connection refused
+
+
+docker-machine create --driver virtualbox default
+
+docker-machine env default
+
+eval $(docker-machine env default)
+docker command works correct
