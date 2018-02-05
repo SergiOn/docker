@@ -3,3 +3,6 @@ https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/#insta
 
 docker-machine
 https://docs.docker.com/machine/install-machine/
+
+virtualbox
+http://help.ubuntu.ru/wiki/virtualbox
