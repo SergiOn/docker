@@ -1,0 +1,17 @@
+docker run ubuntu pwd
+
+pwd
+
+docker run -i -t ubuntu /bin/bash
+inside container/ubuntu
+
+hostname
+
+ls
+
+ps -A
+
+exit
+back to host machine
+
+docker ps
