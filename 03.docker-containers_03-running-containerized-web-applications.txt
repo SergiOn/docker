@@ -1,0 +1,57 @@
+docker run -d -P --name redis redis
+
+docker ps
+
+docker run --link redis -i -t ubuntu /bin/bash
+
+env
+
+exit
+
+docker ps
+
+docker run -d --link redis --name web rickfast/oreilly-simple-web-app
+
+docker ps
+
+curl localhost:4567
+curl: (7) Failed to connect to localhost port 4567: Connection refused
+
+docker kill web
+
+docker ps
+
+docker rm web
+
+docker ps
+
+docker run -p 4567:4567 --link redis --name web rickfast/oreilly-simple-web-app
+
+http://localhost:4567
+The data in the Redis database is
+
+http://localhost:4567/load/hello
+
+http://localhost:4567
+The data in the Redis database is hello
+
+ctrl + c
+
+docker rm web
+
+docker run -P --link redis --name web -d rickfast/oreilly-simple-web-app
+
+docker ps
+
+docker ps -l
+
+docker port web
+
+http://localhost:32770
+The data in the Redis database is hello
+
+curl localhost:32770
+
+docker ps
+
+docker ps -l
