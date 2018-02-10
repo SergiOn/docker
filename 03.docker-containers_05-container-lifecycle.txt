@@ -1,0 +1,48 @@
+docker run --name hello rickfast/hello-oreilly
+
+docker ps
+
+docker ps -a
+
+docker restart hello
+
+docker run rickfast/oreilly-shut-me-down
+
+ctrl + c
+
+docker run --name shutmedown -d rickfast/oreilly-shut-me-down
+
+
+docker logs -f shutmedown
+
+
+docker stop --time 10 shutmedown
+
+docker restart shutmedown
+
+
+docker logs -f shutmedown
+
+
+docker stop --time 1 shutmedown
+
+docker restart shutmedown
+
+
+docker logs -f shutmedown
+
+
+docker kill shutmedown
+
+docker ps -a
+
+docker rm shutmedown
+
+docker ps -a
+
+
+docker rm $(docker ps --all -q -f status=exited)
+
+docker stop $(docker ps -a -q)
+
+docker rm $(docker ps -a -q)
