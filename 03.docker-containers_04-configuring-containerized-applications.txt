@@ -1,0 +1,41 @@
+docker run -e "HELLO=OREILLY" ubuntu /bin/bash -c export
+
+docker run -d -P --name redis redis
+
+docker ps
+
+docker container ls
+
+docker inspect redis
+
+docker run -d -e "REDIS_PORT_6379_TCP_ADDR=172.17.0.2" --name web -p 4567:4567 rickfast/oreilly-simple-web-app
+
+docker ps
+
+http://localhost:4567
+
+http://localhost:4567/load/DATA
+ok
+
+http://localhost:4567
+
+
+docker kill web
+
+docker ps
+
+docker container ls
+
+docker rm web
+
+docker ps
+
+docker container ls
+
+docker kill redis
+
+docker rm redis
+
+docker ps
+
+docker container ls
