@@ -55,3 +55,37 @@ curl localhost:32770
 docker ps
 
 docker ps -l
+
+
+docker kill web
+
+docker rm web
+
+docker ps
+
+docker kill redis
+
+docker ps
+
+docker rm redis
+
+docker ps
+
+docker container
+
+docker container ls
+
+docker run -d -P --name redis redis
+
+docker container ls
+
+docker rm redis
+Error response from daemon: You cannot remove a running container
+5ca480bba9807377b4b6bfcf3416e83bfcbf8e90c2314cc3e1fcc03d9706a6da.
+Stop the container before attempting removal or force remove
+
+docker kill redis
+
+docker rm redis
+
+docker container ls
