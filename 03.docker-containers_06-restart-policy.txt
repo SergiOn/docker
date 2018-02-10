@@ -1,0 +1,29 @@
+docker run --name timebomb -d -p 4567:4567 rickfast/oreilly-time-bomb
+
+
+docker logs -f timebomb
+
+
+curl localhost:4567
+
+docker ps
+
+docker rm timebomb
+
+docker run -d -p 4567:4567 --name timebomb --restart unless-stopped rickfast/oreilly-time-bomb
+
+
+docker logs -f timebomb
+
+
+curl localhost:4567
+
+docker ps
+
+docker kill timebomb
+
+docker ps
+
+docker rm timebomb
+
+docker ps -a
