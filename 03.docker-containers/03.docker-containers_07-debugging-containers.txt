@@ -1,0 +1,33 @@
+docker ps
+
+docker ps -a
+
+docker run -d -p 6379:6379 --name redis redis
+
+docker ps -l
+
+docker logs redis
+
+docker logs -f redis
+
+ctrl + c
+
+docker inspect redis
+
+docker inspect --format='{{.NetworkSettings.IPAddress}}' redis
+
+docker run -i -t ubuntu /bin/bash
+
+exit
+
+docker exec -i -t redis /bin/bash
+
+ps -A
+
+exit
+
+docker kill redis
+
+docker rm redis
+
+docker ps
