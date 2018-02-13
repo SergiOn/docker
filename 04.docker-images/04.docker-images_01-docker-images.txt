@@ -1,0 +1,25 @@
+
+EXPOSE 5000
+
+ADD app.py
+
+RUN pip install flask
+
+RUN apt-get install python
+
+FROM ubuntu:15.10
+
+
+Dockerfile
+
+FROM ubuntu:15:10
+
+RUN apt-get install python
+
+RUN pip install flask
+
+ADD app.py
+
+EXPOSE 5000
+
+ENTRYPOINT python app.py
