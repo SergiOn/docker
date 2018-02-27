@@ -1,0 +1,50 @@
+docker search alpine
+
+docker images
+
+docker pull alpine
+
+docker images
+
+
+docker run -i -t alpine /bin/sh
+
+apk update
+
+apk add nodejs
+
+node --version
+
+mkdir average
+
+cd average
+
+vi average.js
+
+var sum = 0;
+var count = 0;
+process.argv.forEach(function (val, index, array) {
+    if (index > 1) {
+        sum += parseInt(val);
+        count++;
+    }
+});
+console.log(sum / count);
+
+esc :wq
+
+chmod +x average.js
+
+./average.js 3 4 5
+
+hostname
+e6673b448ce9
+
+exit
+
+
+docker commit -m "installed node and wrote average application" e6673b448ce9
+sha256:d24ab90ef0fd34768331a51b1da8497995162f6cc382de4d0205af55db2fadc3
+
+docker run d24ab average/average.js 3 4 5
+4
