@@ -1,0 +1,12 @@
+cd 04.docker-images/
+
+cd 04.docker-images_04-dockerfile/
+
+docker build .
+
+docker images
+
+
+// use second docker file
+
+docker build -t rickfast/average .
