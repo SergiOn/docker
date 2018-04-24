@@ -1,0 +1,12 @@
+docker run -d -p 6379:6379 --name redis redis
+
+docker build -t rickfast/counter .
+
+docker run -p 4567:4567 --link redis:redis rickfast/counter
+
+
+fixed ruby start problem
+https://stackoverflow.com/questions/13841200/setting-up-with-ruby-cannot-load-such-file-json-pure/13928370
+gem install json_pure --no-ri --no-rdoc
+
+RUN gem install json_pure --no-ri --no-rdoc

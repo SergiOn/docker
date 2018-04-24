@@ -1,2 +1,0 @@
-FROM alpine
-MAINTAINER rickfast <rick.t.fast@gmail.com>
