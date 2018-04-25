@@ -1,0 +1,9 @@
+docker build -t ping .
+
+docker run ping
+
+docker run ping ls -l
+
+
+ping error
+https://stackoverflow.com/questions/39901311/docker-ubuntu-bash-ping-command-not-found
