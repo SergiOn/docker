@@ -1,0 +1,10 @@
+docker build -t shell .
+
+docker run shell
+
+ctrl + c
+does not have access to terminal
+
+docker ps
+
+docker kill "id"
