@@ -8,3 +8,5 @@ virtualbox
 http://help.ubuntu.ru/wiki/virtualbox
 
 
+link to repository:
+https://resources.oreilly.com/examples/0636920050650
