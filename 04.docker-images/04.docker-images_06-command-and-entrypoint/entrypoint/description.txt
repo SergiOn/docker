@@ -1,0 +1,5 @@
+docker build -t ping .
+
+docker run ping
+
+docker run ping oreilly.com
