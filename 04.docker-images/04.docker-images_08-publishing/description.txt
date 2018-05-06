@@ -1,0 +1,12 @@
+docker build .
+Successfully built 7ef1f74c5060
+
+docker tag 7ef1 serhiion/hello-dockerhub:1.0
+
+docker tag 7ef1 serhiion/hello-dockerhub:latest
+
+docker images
+
+docker login
+
+docker push serhiion/hello-dockerhub
