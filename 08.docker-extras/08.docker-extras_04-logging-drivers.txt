@@ -1,0 +1,28 @@
+# https://hub.docker.com/r/splunk/splunk/
+
+docker run --log-driver=json-file rickfast/hello-oreilly
+
+docker run --name splunk -d -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_USER=root" -p "8000:8000" splunk/splunk
+# or
+docker run --name splunk -d -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_USER=root" -p 8000:8000 -p 8088:8088 splunk/splunk
+
+docker-machine ip
+# 192.168.99.100
+
+open:
+192.168.99.100:8000
+
+http://192.168.99.100:8000/en-US/manager/launcher/sourcetypes
+"New Source Type"
+
+http://192.168.99.100:8000/en-US/manager/launcher/datainputstats
+HTTP Event Collector
+Global Settings
+New Token
+token:
+adf9eb29-6f46-445f-bea5-26aa5fe7480c
+
+docker run --name hello --log-driver=splunk --log-opt splunk-token=adf9eb29-6f46-445f-bea5-26aa5fe7480c --log-opt splunk-url=http://192.168.99.100:8088 --log-opt splunk-sourcetype=Docker rickfast/hello-oreilly
+
+
+http://192.168.99.100:8000/en-US/app/launcher/search?q=search%20sourcetype%3D%22Docker%22&earliest=0&latest=&display.page.search.mode=smart&dispatch.sample_ratio=1&sid=1525884577.6
