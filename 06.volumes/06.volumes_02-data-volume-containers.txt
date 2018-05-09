@@ -1,0 +1,27 @@
+# https://hub.docker.com/r/klaemo/couchdb/
+
+docker create -v /opt/couchdb/some-path --name db-data debian:jessie /bin/true
+# does not work. -v in container expect the same path
+
+docker create -v /opt/couchdb/data --name db-data debian:jessie /bin/true
+
+docker run -d -p 5984:5984 -v /opt/couchdb/data --name db1 --volumes-from db-data klaemo/couchdb
+
+docker run -d -p 5985:5984 -v /opt/couchdb/data --name db2 --volumes-from db-data klaemo/couchdb
+
+curl -X PUT http://localhost:5984/db
+
+curl -X PUT http://localhost:5985/db
+
+
+curl -H 'Content-Type: application/json' -X POST http://localhost:5984/db -d '{"value": "Hello OReilly"}'
+{"ok":true,"id":"c395c5c3b3db74890e0e186bbd0011df","rev":"1-c7d1d7b98a7bdb6a2b3b834ca7d24b7c"}
+
+
+curl http://localhost:5984/db/c395c5c3b3db74890e0e186bbd0011df
+{"_id":"c395c5c3b3db74890e0e186bbd0011df","_rev":"1-c7d1d7b98a7bdb6a2b3b834ca7d24b7c","value":"Hello OReilly"}
+
+
+curl http://localhost:5985/db/c395c5c3b3db74890e0e186bbd0011df
+{"_id":"c395c5c3b3db74890e0e186bbd0011df","_rev":"1-c7d1d7b98a7bdb6a2b3b834ca7d24b7c","value":"Hello OReilly"}
+
