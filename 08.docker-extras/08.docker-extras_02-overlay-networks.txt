@@ -1,0 +1,19 @@
+docker run -d -p 2181:2181 jplock/zookeeper
+
+docker-machine create -d virtualbox --swarm --swarm-master --swarm-discovery="zk://localhost:2181/swarm" --engine-opt="cluster-store=zk://localhost:2181/overlay" --engine-opt="cluster-advertise=eth1:2376" swarm-master
+
+docker-machine create -d virtualbox --swarm --swarm-master --swarm-discovery="zk://localhost:2181/swarm" --engine-opt="cluster-store=zk://localhost:2181/overlay" --engine-opt="cluster-advertise=eth1:2376" node1
+
+docker-machine create -d virtualbox --swarm --swarm-master --swarm-discovery="zk://localhost:2181/swarm" --engine-opt="cluster-store=zk://localhost:2181/overlay" --engine-opt="cluster-advertise=eth1:2376" node2
+
+eval $(docker-machine env --swarm swarm-master)
+
+docker network create --driver overlay overlay-net
+
+docker run --name counter -p 4567:4567 -d --net=overlay-net --env="constraint:node==node1" rickfast/counter
+
+docker run --name redis -d --net=overlay-net --env="constraint:node==node2" redis
+
+docker ps
+
+localhost:4567
