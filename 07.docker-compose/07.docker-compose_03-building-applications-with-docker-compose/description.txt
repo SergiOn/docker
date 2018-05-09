@@ -1,0 +1,8 @@
+docker-compose up
+
+http://localhost:4567/
+
+
+ctrl + c
+
+docker-compose rm
