@@ -1,0 +1,13 @@
+docker run -d -p 5000:5000 --name registry registry:2
+
+docker-machine create --driver virtualbox --engine-insecure-registry 192.168.99.100:5000 example
+
+eval $(docker-machine env example)
+
+vi Dockerfile
+
+docker build -t 192.168.99.100:5000/serhiion/hi-registry .
+
+docker push 192.168.99.100:5000/serhiion/hi-registry
+
+docker run 192.168.99.100:5000/serhiion/hi-registry
