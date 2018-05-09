@@ -1,0 +1,33 @@
+docker run -d -p 2181:2181 --name zookeeper jplock/zookeeper
+
+docker run -d -p 3376:3376 --name manager -t -v /var/lib/boot2docker:/certs:ro swarm manage -H tcp://0.0.0.0:3376 --tlsverify --tlscacert=/certs/ca.pem --tlscert=/certs/server.pem --tlskey=/certs/server-key.pem zk://localhost:2181
+
+docker-machine create --driver virtualbox node1
+
+eval $(docker-machine env node1)
+
+docker run -d swarm join --addr $(docker-machine ip node1):2376 zk://localhost:2181
+
+docker ps
+
+docker-machine create --driver virtualbox node2
+
+eval $(docker-machine env node2)
+
+docker run -d swarm join --addr $(docker-machine ip node2):2376 zk://localhost:2181
+
+docker-machine start default
+
+eval $(docker-machine env default)
+
+export DOCKER_HOST=localhost:3376
+
+docker info
+# cluster info
+
+docker run ...
+# it runs containers on nodes
+
+docker ps
+
+docker-machine rm node1 node2
