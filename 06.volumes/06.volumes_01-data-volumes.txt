@@ -1,0 +1,29 @@
+# https://hub.docker.com/r/klaemo/couchdb/
+
+docker run -d -p 5984:5984 -v $(pwd)/data:/opt/couchdb/data --name couchdb klaemo/couchdb
+
+curl -X PUT http://localhost:5984/db
+
+ls data
+
+curl -H 'Content-Type: application/json' -X POST http://localhost:5984/db -d '{"value": "Hello OReilly"}'
+{"ok":true,"id":"29a66050ffec3b7d763bf939cc000c7c","rev":"1-c7d1d7b98a7bdb6a2b3b834ca7d24b7c"}
+
+curl http://localhost:5984/db/29a66050ffec3b7d763bf939cc000c7c
+{"_id":"29a66050ffec3b7d763bf939cc000c7c","_rev":"1-c7d1d7b98a7bdb6a2b3b834ca7d24b7c","value":"Hello OReilly"}
+
+docker kill couchdb
+
+docker rm couchdb
+
+docker run -d -p 5984:5984 -v $(pwd)/data:/opt/couchdb/data --name new-couchdb klaemo/couchdb
+
+curl http://localhost:5984/db/29a66050ffec3b7d763bf939cc000c7c
+{"_id":"29a66050ffec3b7d763bf939cc000c7c","_rev":"1-c7d1d7b98a7bdb6a2b3b834ca7d24b7c","value":"Hello OReilly"}
+
+
+docker kill new-couchdb
+
+docker rm new-couchdb
+
+docker ps
