@@ -4,5 +4,25 @@ docker-compose up
 
 ctrl + c
 
+docker-compose up
 
+ctrl + c
+
+docker ps -a
+
+docker-compose up -d
+Starting 07dockercompose01dockercompose_kv-store-2_1
+Starting 07dockercompose01dockercompose_kv-store-1_1
+
+
+docker-compose stop
+Stopping 07dockercompose01dockercompose_kv-store-2_1 ... done
+Stopping 07dockercompose01dockercompose_kv-store-1_1 ... done
+
+
+docker-compose rm
+Going to remove 07dockercompose01dockercompose_kv-store-2_1, 07dockercompose01dockercompose_kv-store-1_1
+Are you sure? [yN] y
+Removing 07dockercompose01dockercompose_kv-store-2_1 ... done
+Removing 07dockercompose01dockercompose_kv-store-1_1 ... done
 
