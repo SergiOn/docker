@@ -1,0 +1,13 @@
+# sudo apt install docker-compose
+
+docker-compose up
+
+in other terminal:
+echo Hello OReilly | nc localhost 5555
+
+http://localhost:5601
+
+
+ctrl + c
+
+docker-compose rm
